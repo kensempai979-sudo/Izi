@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversário, Isilda! - 16 de Dezembro</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: linear-gradient(to bottom, #0f001f, #1a0033);
+            color: #e0ccff;
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Partículas de fundo animadas */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: #bb88ff;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+            }
+
+            100% {
+                transform: translateY(-100px) translateX(100px);
+            }
+        }
+
+        /* Efeito glitch */
+        @keyframes glitch {
+            0% {
+                text-shadow: 0.05em 0 0 #fff, -0.05em 0 0 #ff00ff;
+            }
+
+            15% {
+                text-shadow: 0.05em 0 0 #fff, -0.05em 0 0 #ff00ff;
+            }
+
+            16% {
+                text-shadow: -0.05em -0.05em 0 #00ffff, 0.05em 0.05em 0 #ff00ff;
+            }
+
+            30% {
+                text-shadow: -0.05em -0.05em 0 #00ffff, 0.05em 0.05em 0 #ff00ff;
+            }
+
+            31% {
+                text-shadow: 0.05em 0.025em 0 #fff, -0.05em -0.025em 0 #ff00ff;
+            }
+
+            45% {
+                text-shadow: 0.05em 0.025em 0 #fff, -0.05em -0.025em 0 #ff00ff;
+            }
+
+            46% {
+                text-shadow: -0.05em 0 0 #00ffff, 0.05em 0 0 #ff00ff;
+            }
+
+            60% {
+                text-shadow: -0.05em 0 0 #00ffff, 0.05em 0 0 #ff00ff;
+            }
+
+            61% {
+                text-shadow: 0.025em -0.05em 0 #fff, -0.025em 0.05em 0 #ff00ff;
+            }
+
+            75% {
+                text-shadow: 0.025em -0.05em 0 #fff, -0.025em 0.05em 0 #ff00ff;
+            }
+
+            76% {
+                text-shadow: -0.05em 0 0 #00ffff, 0.05em 0 0 #ff00ff;
+            }
+
+            90% {
+                text-shadow: -0.05em 0 0 #00ffff, 0.05em 0 0 #ff00ff;
+            }
+
+            91% {
+                text-shadow: 0.05em 0 0 #fff, -0.05em 0 0 #ff00ff;
+            }
+
+            100% {
+                text-shadow: 0.05em 0 0 #fff, -0.05em 0 0 #ff00ff;
+            }
+        }
+
+        header {
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5rem;
+            color: #bb88ff;
+            text-shadow: 0 0 20px #bb88ff, 0 0 40px #9933ff;
+            animation: glow 3s ease-in-out infinite alternate, glitch 5s infinite;
+        }
+
+        h2 {
+            font-size: 3rem;
+            color: #e0ccff;
+            text-shadow: 0 0 15px #bb88ff;
+        }
+
+        p.intro {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 20px auto;
+            text-shadow: 0 0 10px #9933ff;
+        }
+
+        /* Seção de mensagens personalizadas */
+        .messages {
+            max-width: 1000px;
+            margin: 80px auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .message-card {
+            background: rgba(30, 0, 60, 0.6);
+            border: 1px solid #bb88ff;
+            border-radius: 15px;
+            padding: 35px;
+            margin: 50px 0;
+            box-shadow: 0 0 30px rgba(187, 136, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .message-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent, rgba(187, 136, 255, 0.1));
+            animation: scan 5s linear infinite;
+        }
+
+        @keyframes scan {
+            0% {
+                transform: translateY(-100%);
+            }
+
+            100% {
+                transform: translateY(100%);
+            }
+        }
+
+        .message-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #bb88ff;
+            text-shadow: 0 0 15px #bb88ff;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .message-card p {
+            font-size: 1.5rem;
+            line-height: 1.9;
+            text-shadow: 0 0 8px #9933ff;
+        }
+
+        /* Galeria de fotos */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .photo-slot {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(187, 136, 255, 0.6);
+            transition: transform 0.5s, box-shadow 0.5s;
+        }
+
+        .photo-slot:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px #bb88ff, 0 0 60px #9933ff;
+        }
+
+        .photo-slot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.9);
+            transition: filter 0.5s;
+        }
+
+        .photo-slot:hover img {
+            filter: brightness(1.1);
+        }
+
+        /* Música */
+        audio {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px #bb88ff;
+            }
+
+            to {
+                text-shadow: 0 0 40px #bb88ff, 0 0 60px #9933ff;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="particles" id="particles"></div>
+
+    <header>
+        <h1 class="glitch">Feliz Aniversário, Isilda!</h1>
+        <h2>16 de Dezembro</h2>
+        <p class="intro">Hoje é um dia especial, cheio de luz e alegria. Celebramos você com todo o carinho do mundo!
+        </p>
+    </header>
+
+    <!-- Mensagens personalizadas sem referências cyberpunk -->
+    <section class="messages">
+
+        <div class="message-card">
+            <h3>Mensagem 01 Edson</h3>
+            <p>Isilda, bem-vinda ao seu nível +1! Hoje o dia inteiro está de parabéns só porque você existe. Imagina
+                todo mundo cantando parabéns com vontade, o bolo com velhinhas que não apagam de primeira (clássico), e
+                você abrindo presentes como uma campeã. Que este ano venha cheio de aventuras incríveis, conquistas
+                gigantes e zero dias ruins. Se der errado, é só dar risada e tentar de novo. Feliz aniversário, rainha
+                absoluta! (minha futura rainha ne kkkkkk)</p>
+        </div>
+
+        <div class="message-card">
+            <h3>Mensagem 02 Edson</h3>
+            <p>Parabéns, Isilda! Você acabou de ganhar mais um ano de experiência nessa jornada maluca chamada vida. Em
+                um mundo cheio de gente previsível, você é aquela pessoa que ri alto de piada ruim, dança sem ligar pro
+                que os outros pensam (e arrasa), e ainda faz o melhor café do universo às 3 da manhã. (fico pensando as
+                3da manha)
+                Que esse novo
+                ciclo traga mais energia pra realizar sonhos, velocidade pra correr atrás dos planos e proteção total
+                contra energias negativas. Level up concluído com sucesso!</p>
+        </div>
+
+        <div class="message-card">
+            <h3>Mensagem 03 Edson</h3>
+            <p>Ô Isilda, se hoje tivesse uma rainha oficial, seria você sem discussão. (eu o rei ne kkkkk) Você chega no
+                rolê, (escola) todo mundo
+                (eu no caso) sorri automaticamente, a música fica melhor e o dia vira festa. Hoje é dia de recarregar as
+                energias,
+                comer bolo até não aguentar mais (sem culpa, é regra), dançar até cansar e aproveitar cada segundo. Que
+                venham mais momentos felizes, amigos que valem ouro e histórias pra contar pro resto da vida. Você
+                merece o melhor do mundo!</p>
+        </div>
+
+        <div class="message-card">
+            <h3>Mensagem 04 Ramata</h3>
+            <p>Lembra daquela vez que a gente riu tanto que doeu a barriga? Ou quando você transformou um dia normal em
+                algo inesquecível só porque resolveu fazer algo doido? Pois é, Isilda, você tem esse dom mágico de
+                deixar tudo mais divertido e especial. Cada momento com você fica guardado pra sempre no coração.
+                Obrigado por ser essa pessoa incrível que ilumina a vida de todo mundo. Que esse novo ano venha cheio de
+                cenas dignas de filme e finais felizes garantidos!</p>
+        </div>
+
+        <div class="message-card">
+            <h3>Mensagem 05 Edson</h3>
+            <p>Isilda, você é simplesmente única e maravilhosa. Hoje o universo inteiro para um pouquinho só pra te dar
+                os parabéns e mandar boas energias. Que todos os seus desejos se realizem rapidinho, que a sorte te
+                acompanhe em tudo e que a felicidade te abrace forte todos os dias. Feliz aniversário com muita força,
+                com bolo, brigadeiro, abraços apertados e muito, mas MUITO amor. Você é incrível e ponto final!</p>
+        </div>
+
+    </section>
+
+    <section class="gallery">
+        <!-- 10 slots para fotos -->
+        <div class="photo-slot">
+            <img src="isilda1.jpg" alt="Foto 1 da Isilda">
+        </div>
+        <div class="photo-slot">
+            <img src="isilda2.jpg" alt="Foto 2 da Isilda">
+        </div>
+        <div class="photo-slot">
+            <img src="isilda3.jpg" alt="Foto 3 da Isilda">
+        </div>
+        <div class="photo-slot">
+            <img src="isilda4.jpn.jpg" alt="Foto 4 da Isilda">
+        </div>
+        <div class="photo-slot">
+            <img src="isilda5.jpg" alt="Foto 5 da Isilda">
+        </div>
+        <div class="photo-slot">
+            <img src="isilda6.jpg" alt="Foto 6 da Isilda">
+        </div>
+        <div class="photo-slot">
+            <img src="isilda7.jpg" alt="Foto 7 da Isilda">
+        </div>
+        <div class="photo-slot">
+            <img src="isilda8.jpg" alt="Foto 8 da Isilda">
+
+            <div class="message-card"> eu disse que te daria algo unico kkkkkk
+
+            </div>
+    </section>
+
+    <!-- Música de fundo cyberpunk (mantida porque o tema visual ainda é cyberpunk) -->
+    <audio controls autoplay loop>
+        <source
+            src="https://cdn.pixabay.com/download/audio/2023/07/26/audio_1f2b3e4d5e.mp3?filename=cyberpunk-154822.mp3"
+            type="audio/mpeg">
+        Seu navegador não suporta áudio.
+    </audio>
+
+    <script>
+        // Partículas animadas
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 50; i++) {
+            const p = document.createElement('div');
+            p.classList.add('particle');
+            p.style.width = Math.random() * 5 + 'px';
+            p.style.height = p.style.width;
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.animationDelay = Math.random() * 15 + 's';
+            p.style.animationDuration = 10 + Math.random() * 20 + 's';
+            particlesContainer.appendChild(p);
+        }
+    </script>
+</body>
+
+</html>
